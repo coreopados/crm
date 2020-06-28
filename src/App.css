@@ -1,0 +1,77 @@
+/* login page */
+*{
+  box-sizing:border-box;
+  outline:none;
+}
+
+body{
+  font-family: 'Gilroy-Medium';
+}
+button{
+  border:0;
+  background: none;
+  cursor:pointer;
+}
+p{
+  margin: 0;
+}
+li{
+  list-style:none;
+}
+
+ul, li,p {
+  margin: 0;
+  padding: 0;
+}
+.title{
+  font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 36px;
+margin-top: 0;
+margin-bottom: 10px;
+}
+
+.subtitle{
+  font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+letter-spacing: 0.01em;
+color: #A6ACBE;
+margin: 0;
+}
+.button {
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: center;
+  background: none;
+  border:0;
+  height: 50px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  min-width: 204px;
+  cursor:pointer;
+font-weight: 600;
+font-size: 14px;
+text-align: center;
+padding-left: 20px;
+padding-right: 20px;
+font-family: 'Gilroy-Bold';
+}
+.button svg{
+  margin-right: 17px;
+}
+.transparent{
+  color:#6F52ED;
+  background: trenaparent;
+  border:1px solid #DADCE6;
+}
+.violet{
+  background:#6F52ED;
+  color:#fff;
+}
+.orange{
+  background:#FF7A00;}
+
