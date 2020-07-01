@@ -7,7 +7,6 @@ import FormNewOrder from './formNewOrder/FormNewOrder';
 class Sales extends React.Component {
 
     state = {
-        // DisplayedItems: dataTest,
         isOpen: false
     }
 
@@ -20,7 +19,6 @@ class Sales extends React.Component {
                 < div className="row" >
                     <div className="title-wrap">
                         <h3 className="title">Sales</h3>
-                        {/* <h5 className="subtitle">Main parameters and sales</h5> */}
                     </div>
 
                     <div className="edit-block">
@@ -51,8 +49,9 @@ class Sales extends React.Component {
                         </div>
                     </div>
 
-                    <div className="row-body">
+                    {/* <div className="row-body">
                         {
+
                             this.props.appState.dataTest.map((item, index) => {
                                 return <SalesTableRow
                                     key={index}
@@ -68,11 +67,11 @@ class Sales extends React.Component {
                                     source={item.source}
                                     status={item.status}
 
-                                   
+
                                 />
                             })
                         }
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

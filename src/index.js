@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state from './state/dataTest';
-import { addRow } from './state/dataTest'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App appState={state} addRow={addRow} />
+    <App  />
   </React.StrictMode>,
   document.getElementById('root')
 )

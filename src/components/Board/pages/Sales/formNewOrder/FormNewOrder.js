@@ -10,7 +10,10 @@ class FormNewOrder extends React.Component {
     constructor(props) {
         super(props);
 
+
+
         this.state = {
+
             newOrder: {
 
             },
@@ -25,7 +28,10 @@ class FormNewOrder extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.addRowData = this.addRowData.bind(this);
 
+
+
     }
+
 
     handleInput(e) {
         let value = e.target.value;
@@ -37,8 +43,12 @@ class FormNewOrder extends React.Component {
                     [name]: value
                 }
             }),
-            // () => console.log(this.state.newOrder)
+            // () => console.log(this.state.newOrder),
+
+            // () => localStorage.setItem('rows', JSON.stringify(this.state.newOrder))
         );
+
+
     }
 
 
@@ -108,17 +118,17 @@ class FormNewOrder extends React.Component {
 
                         <label>
                             <p>Type of work</p>
-                            <Select type={'text'} name={'type_work'} options={this.state.type} value={this.state.newOrder.type || ''} handleChange={this.handleInput} />
+                            <Select type={'text'} name={'type_work'} options={this.state.type} handleChange={this.handleInput} />
                         </label>
 
                         <label>
                             <p>Date start</p>
-                            <Input value={this.state.newOrder.start || ''} handleChange={this.handleInput} type={'date'} name={"date_start"} />
+                            <Input handleChange={this.handleInput} type={'date'} name={"date_start"} />
                         </label>
 
                         <label>
                             <p>Date finish</p>
-                            <Input value={this.state.newOrder.finish || ''} handleChange={this.handleInput} type={'date'} name={"date_finish"} />
+                            <Input handleChange={this.handleInput} type={'date'} name={"date_finish"} />
                         </label>
 
                         <label className="commentLabel">
@@ -156,6 +166,7 @@ class FormNewOrder extends React.Component {
                 </div>
             </div>
         )
+
         if (!this.props.isOpen) {
             Modal = null
         }
