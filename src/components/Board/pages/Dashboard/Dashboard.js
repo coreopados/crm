@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
 
     render() {
 
-        console.log(this.props.appState)
+
         return (
             <div className="wrap-board">
 
@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
 
                 <div className="row-grid-4">
 
-                    {
+                    {/* {
                         this.props.appState.DashBoardInfo.map((item, index) => {
                             return <DashBoardBlock
                                 key={index}
@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
                                 number={item.number}
                             />
                         })
-                    }
+                    } */}
 
                 </div>
 
@@ -95,7 +95,7 @@ class Dashboard extends React.Component {
 
                                 <div className='chartRow-area'>
 
-                                    {
+                                    {/* {
                                         this.props.appState.GraphikTest.map((item, index) => {
                                             return <DashBoardGrafik
                                                 key={index}
@@ -104,7 +104,7 @@ class Dashboard extends React.Component {
                                                 left={item.left}
                                             />
                                         })
-                                    }
+                                    } */}
 
                                 </div>
                             </div>
@@ -155,7 +155,7 @@ class Dashboard extends React.Component {
                                 <div className='chartRow-area'>
                                     <div className='chartRow-area'>
 
-                                        {
+                                        {/* {
                                             this.props.appState.GraphikTest2.map((item, index) => {
                                                 return <DashBoardGrafik
                                                     key={index}
@@ -164,7 +164,7 @@ class Dashboard extends React.Component {
                                                     left={item.left}
                                                 />
                                             })
-                                        }
+                                        } */}
 
                                     </div>
                                 </div>

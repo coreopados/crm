@@ -30,7 +30,7 @@ function Menu() {
             <ul className="menu-items">
 
                 <li>
-                    <NavLink to="/dashboard" exact сlassName="active">
+                    <NavLink to="/dashboard" >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 12V21H6V12H2Z" fill="#969CBA" fillOpacity="0.2" stroke="#969CBA " strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M18 7V21H22V7H18Z" fill="#969CBA" fillOpacity="0.2" stroke="#969CBA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

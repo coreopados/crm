@@ -8,7 +8,7 @@ const Select = (props) => {
             <select
                 name={props.name}
                 value={props.value}
-                onChange={props.handleChange}
+                onChange={props.handlechange}
             >
                 <option value="" disabled></option>
                 {props.options.map(option => {

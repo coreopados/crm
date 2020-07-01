@@ -4,6 +4,7 @@ import '../../../../../App.css';
 import '../../../../Login/login.css';
 import Input from "./Input";
 import Select from "./Select";
+import { addRow } from '../../../../../state/dataTest';
 
 class FormNewOrder extends React.Component {
 
@@ -12,13 +13,20 @@ class FormNewOrder extends React.Component {
 
         this.state = {
             newOrder: {
+                type_work: 'Front-end',
+                source: 'Site',
+                status: 'Completed',
+                project_name: '',
+                start: '',
+                finish: '',
+                cost: '',
+                paid: '',
+                commentary: '',
 
             },
-            type: ['Front-end', 'Back-end', 'Design'],
-            sources: ['Site', 'Friend', 'Client'],
+            type_work: ['Front-end', 'Back-end', 'Design'],
+            source: ['Site', 'Friend', 'Client'],
             status: ['Complete', 'In progress'],
-
-
         }
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
@@ -26,6 +34,8 @@ class FormNewOrder extends React.Component {
         this.addRowData = this.addRowData.bind(this);
 
     }
+
+
 
     handleInput(e) {
         let value = e.target.value;
@@ -69,7 +79,7 @@ class FormNewOrder extends React.Component {
         this.setState({
             newOrder: {
 
-            },
+            }
         })
     }
 
@@ -81,10 +91,15 @@ class FormNewOrder extends React.Component {
         userData2.number = numberRow;
         userData2.id = idRow;
 
-        this.props.addRow(userData2);
+        addRow(userData2);
         this.props.onClose(false);
 
-        this.state.newOrder = {}
+        // this.state.newOrder = {
+
+        // }
+        // console.log(userData2.map((el) => {
+        //     el
+        // }))
     }
 
 
@@ -108,7 +123,7 @@ class FormNewOrder extends React.Component {
 
                         <label>
                             <p>Type of work</p>
-                            <Select type={'text'} name={'type_work'} options={this.state.type} value={this.state.newOrder.type || ''} handleChange={this.handleInput} />
+                            <Select type={'text'} name={'type_work'} options={this.state.type_work} handleChange={this.handleInput} />
                         </label>
 
                         <label>
@@ -138,7 +153,7 @@ class FormNewOrder extends React.Component {
 
                         <label>
                             <p>Source</p>
-                            <Select type={'text'} name={'source'} options={this.state.sources} value={this.state.newOrder.source || ''} handleChange={this.handleInput} />
+                            <Select type={'text'} name={'source'} options={this.state.source} value={this.state.newOrder.source || ''} handleChange={this.handleInput} />
                         </label>
 
                         <label>

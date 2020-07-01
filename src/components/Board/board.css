@@ -415,6 +415,7 @@ width: 100%;
 }
 .login-form label select,
 .login-form label select option,
+.login-form.new-order-form label select,
 .login-form.new-order-form label input:not([type="submit"]){
     height: 30px;
 }

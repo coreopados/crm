@@ -2,20 +2,21 @@ import React from 'react';
 import '../../../../App.css';
 import SalesTableRow from './tableRow/SalesTableRow';
 import FormNewOrder from './formNewOrder/FormNewOrder';
-
+import state from '../../../../state/dataTest';
 
 class Sales extends React.Component {
 
     state = {
         // DisplayedItems: dataTest,
-        isOpen: false
+        isOpen: false,
+        appState: state
     }
 
     render() {
 
         return (
             <div className="wrap-board" >
-                <FormNewOrder appState={this.props.appState} addRow={this.props.addRow} infoToPopup={this.props.tableInfo} isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })} />
+                <FormNewOrder appState={this.state.appState} addRow={this.state.appState.addRow} infoToPopup={this.props.tableInfo} isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })} />
                 {/* edit block */}
                 < div className="row" >
                     <div className="title-wrap">
@@ -53,7 +54,7 @@ class Sales extends React.Component {
 
                     <div className="row-body">
                         {
-                            this.props.appState.dataTest.map((item, index) => {
+                            this.state.appState.dataTest.map((item, index) => {
                                 return <SalesTableRow
                                     key={index}
                                     id={item.id}
@@ -68,7 +69,7 @@ class Sales extends React.Component {
                                     source={item.source}
                                     status={item.status}
 
-                                   
+
                                 />
                             })
                         }
