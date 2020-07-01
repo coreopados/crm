@@ -108,7 +108,7 @@ class FormNewOrder extends React.Component {
 
                         <label>
                             <p>Type of work</p>
-                            <Select type={'text'} name={'type_work'} options={this.state.type} value={this.state.newOrder.type || ''} handleChange={this.handleInput} />
+                            <Select type={'text'} name={'type_work'} options={this.state.type} value={this.state.newOrder.type || 'Front-end'} handleChange={this.handleInput} />
                         </label>
 
                         <label>
@@ -118,7 +118,7 @@ class FormNewOrder extends React.Component {
 
                         <label>
                             <p>Date finish</p>
-                            <Input value={this.state.newOrder.finish || ''} handleChange={this.handleInput} type={'date'} name={"date_finish"} />
+                            <Input value={Date.now()} handleChange={this.handleInput} type={'date'} name={"date_finish"} />
                         </label>
 
                         <label className="commentLabel">
