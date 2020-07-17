@@ -12,7 +12,9 @@ let state = {
             paid: "111",
             cost: "111",
             source: 'Site',
-            status: "In progress"
+            status: "In progress",
+            client: "Viktor",
+            payment: "Sberbank"
         }, {
             id: "2",
             number: "2",
@@ -24,7 +26,9 @@ let state = {
             paid: "222",
             cost: "222",
             source: 'Client',
-            status: "Completed"
+            status: "Completed",
+            client: "Alexey",
+            payment: "Paypal"
         }
     ],
     DashBoardInfo: [
@@ -163,6 +167,76 @@ let state = {
             applied: '30',
             left: '10'
         }
+    ],
+    Clients: [
+        {
+            id: "1",
+            number: "1",
+            name: 'Viktor',
+            company: "Name Company",
+            mail: "test@test.ru",
+            skype: "ttestest",
+            telegram: "ttestest-06-22",
+            whatsapp: "whatsapp-test",
+            phone: "0993337722",
+        }, {
+            id: "2",
+            number: "2",
+            name: 'Alexey',
+            company: "Name Company2",
+            mail: "test@test.ru",
+            skype: "ttestest",
+            telegram: "ttestest-06-12",
+            whatsapp: "whatsapp-test",
+            phone: "0993337722",
+        }, {
+            id: "3",
+            number: "3",
+            name: 'Vladimir',
+            company: "Name Company 3",
+            mail: "test@test.ru",
+            skype: "ttestest",
+            telegram: "ttestest-06-22",
+            whatsapp: "whatsapp-test",
+            phone: "0993337722",
+        }, {
+            id: "4",
+            number: "4",
+            name: 'Ivan',
+            company: "Name Company 4",
+            mail: "test@test.ru",
+            skype: "ttestest",
+            telegram: "ttestest-06-22",
+            whatsapp: "whatsapp-test",
+            phone: "0993337722",
+        },
+    ],
+    Users: [
+        {
+            id: "1",
+            login: 'login',
+            name: 'Viktor',
+            role: "role",
+            team: "Front-end"
+        }, {
+            id: "2",
+            login: 'login-2',
+            name: 'Alexey',
+            role: "role-3",
+            team: "Back-end"
+        }, {
+            id: "3",
+            login: 'login-3',
+            name: 'Viktor',
+            role: "role-5",
+            team: "Design"
+        }, {
+            id: "4",
+            login: 'login-4',
+            name: 'Alexey',
+            role: "role-2",
+            team: "Front-end"
+        }
     ]
 }
 
@@ -170,4 +244,11 @@ export let addRow = (userData2) => {
     state.dataTest.push(userData2)
 }
 
+export let addClient = (client) => {
+    state.Clients.push(client)
+}
+
+export let addUser = (user) => {
+    state.Users.push(user)
+}
 export default state;

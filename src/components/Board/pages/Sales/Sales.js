@@ -3,20 +3,23 @@ import '../../../../App.css';
 import SalesTableRow from './tableRow/SalesTableRow';
 import FormNewOrder from './formNewOrder/FormNewOrder';
 import state from '../../../../state/dataTest';
+import { addRow } from '../../../../state/dataTest';
 
 class Sales extends React.Component {
 
     state = {
         // DisplayedItems: dataTest,
         isOpen: false,
-        appState: state
+        appState: state,
+        addRow: addRow,
+        updateOrder: false
     }
 
     render() {
 
         return (
             <div className="wrap-board" >
-                <FormNewOrder appState={this.state.appState} addRow={this.state.appState.addRow} infoToPopup={this.props.tableInfo} isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })} />
+                <FormNewOrder appState={this.state.appState} update={this.state.updateOrder} addRow={this.state.addRow} infoToPopup={this.props.tableInfo} isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false, updateOrder: false })} />
                 {/* edit block */}
                 < div className="row" >
                     <div className="title-wrap">
@@ -42,12 +45,14 @@ class Sales extends React.Component {
                             <div className="col-name">№</div>
                             <div className="col-name">Project name</div>
                             <div className="col-name">Type of work</div>
+                            <div className="col-name">Commentary</div>
+                            <div className="col-name">Client</div>
+                            <div className="col-name">Source</div>
                             <div className="col-name">Date start</div>
                             <div className="col-name">Date finish</div>
-                            <div className="col-name">Commentary</div>
+                            <div className="col-name">Payment</div>
                             <div className="col-name">Paid</div>
                             <div className="col-name">Cost</div>
-                            <div className="col-name">Source</div>
                             <div className="col-name">Status</div>
                         </div>
                     </div>
@@ -68,8 +73,10 @@ class Sales extends React.Component {
                                     cost={item.cost}
                                     source={item.source}
                                     status={item.status}
-
-
+                                    client={item.client}
+                                    payment={item.payment}
+                                    updateOrder={this.state.updateOrder}
+                                    openModal={(e) => this.setState({ isOpen: true, updateOrder: true })}
                                 />
                             })
                         }

@@ -1,11 +1,11 @@
 .start_page{
-    
+
     display: flex;
     min-height: 100vh;
     height: 100%;
 }
 .start_page .nav-menu{
-    min-width: 100px;
+    min-width: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
 .start_page .nav-menu .Logo-img{
     background: #6F52ED;
     width: 100%;
-    min-height: 100px;
+    min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,8 +40,8 @@
 }
 .start_page .menu-items li a{
     display: flex;
-    width: 54px;
-    height: 54px;
+    width: 50px;
+    height: 50px;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -49,7 +49,7 @@
 .start_page .menu-items li a.active{
     background: #fff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-border-radius: 10px;
+    border-radius: 10px;
 }
 .start_page .menu-items li a.active svg path{
     fill:#713BDB;
@@ -63,12 +63,13 @@ border-radius: 10px;
 }
 .start_page .content-part{
     width: 100%;
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 .start_page .head-block{
     padding: 0 60px;
-    min-height: 100px;
+    min-height: 80px;
     max-width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -104,7 +105,7 @@ border-radius: 10px;
     margin-right: 15px;
 }
 
-.start_page .head-block .person .person-info-wrap .person-info .person-info-name{ 
+.start_page .head-block .person .person-info-wrap .person-info .person-info-name{
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -288,7 +289,7 @@ border-radius: 10px;
     position: relative;
 }
 .row-grid-2__block .chartBody  .chartRow{
-   display: flex;
+    display: flex;
 }
 .row-grid-2__block .chartBody  .chartRow-value{
     display: flex;
@@ -338,12 +339,12 @@ border-radius: 10px;
     bottom: 0;
 }
 .row-grid-2__block .chartBody  .chartRow:last-of-type .chartRow-area .chart-applied{
- 
+
     left: 50%;
     transform: translateX(-6px);
 }
 .row-grid-2__block .chartBody  .chartRow:last-of-type .chartRow-area .chart-left{
-   
+
     left: 50%;
     transform: translateX(6px);
 }
@@ -357,7 +358,8 @@ border-radius: 10px;
 }
 .sales-table .row-table{
     display: grid;
-    grid-template-columns:  0px 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-columns:  0px 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-columns: 0px 60px minmax(65px, 1fr) minmax(120px, 135px) minmax(120px, 135px) minmax(80px, 1fr) minmax(80px, 1fr) minmax(120px, 135px) minmax(120px, 135px)  minmax(80px, 1fr) minmax(80px, 1fr) minmax(80px, 1fr) minmax(85px, 1fr); 
     grid-auto-rows: minmax(40px, auto);
     border-right: 0;
 }
@@ -376,11 +378,11 @@ border-radius: 10px;
     border-right: 0;
 }
 .sales-table .row-table .col-name{
-   background: #e2f0f9;
-   border-right: 1px solid #ccc;
-   text-align: center;
-   line-height: 40px;
-   font-weight: 600;
+    background: #e2f0f9;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
 }
 .sales-table .row-table .col-value{
     border-top: 1px solid #ccc;
@@ -388,10 +390,91 @@ border-radius: 10px;
     text-align: center;
     line-height: 40px;
 }
+
+
+/* clients page */
+.clients-table {
+    border: 1px solid #ccc;
+}
+.clients-table .row-table{
+    display: grid;
+    /* grid-template-columns:  0px 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-columns: 0px 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(40px, auto);
+    border-right: 0;
+}
+.clients-table .row-table:hover .col-value{
+    background: #e2f0f9;
+}
+.clients-table .row-table .col-value.id{
+    opacity: 0;
+}
+.clients-table .row-table .col-table{
+    text-align: center;
+    line-height: 40px;
+}
+.clients-table .row-table .col-value:last-of-type,
+.clients-table .row-table .col-name:last-of-type{
+    border-right: 0;
+}
+.clients-table .row-table .col-name{
+    background: #e2f0f9;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
+}
+.clients-table .row-table .col-value{
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+}
+
+
+/* users page */
+.users-table {
+    border: 1px solid #ccc;
+}
+.users-table .row-table{
+    display: grid;
+    /* grid-template-columns:  0px 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-columns: 0px  1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(40px, auto);
+    border-right: 0;
+}
+.users-table .row-table:hover .col-value{
+    background: #e2f0f9;
+}
+.users-table .row-table .col-value.id{
+    opacity: 0;
+}
+.users-table .row-table .col-table{
+    text-align: center;
+    line-height: 40px;
+}
+.users-table .row-table .col-value:last-of-type,
+.users-table .row-table .col-name:last-of-type{
+    border-right: 0;
+}
+.users-table .row-table .col-name{
+    background: #e2f0f9;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
+}
+.users-table .row-table .col-value{
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+}
+
 .login-form.new-order-form{
     /* display: none; */
     max-width:800px;
-    max-height: 530px;
+    max-height: 560px;
     padding: 2vw 4vw;
     z-index: 2;
 
@@ -408,7 +491,7 @@ border-radius: 10px;
     margin-top: 20px;
 }
 .login-form.new-order-form label.commentLabel{
-width: 100%;
+    width: 100%;
 }
 .login-form.new-order-form label:last-of-type{
     width: 100%;
@@ -439,8 +522,24 @@ width: 100%;
     display: block;position: absolute;
     background: rgba(0,0,0,0.3);
     z-index: 1;
-/* cursor:pointer; */
+    /* cursor:pointer; */
 }
+
+.login-form.new-order-form label{
+    position: relative;
+}
+.login-form.new-order-form label input.error-field,
+.login-form.new-order-form label select.error-field{
+    border-color: red;
+    box-shadow: 0px 0px 2px 0px rgba(255,0,0,0.2);
+}
+.new-order-error{
+    position: absolute;
+    color:red;
+    right: 0;
+}
+
+
 
 @media screen and (max-width:1320px){
     .row-grid-2__block .chartBody .chartRow .chart-line{
@@ -460,12 +559,12 @@ width: 100%;
         width: 5px;
     }
     .row-grid-2__block .chartBody  .chartRow:last-of-type .chartRow-area .chart-applied{
- 
+
         left: 50%;
         transform: translateX(-6px);
     }
     .row-grid-2__block .chartBody  .chartRow:last-of-type .chartRow-area .chart-left{
-       
+
         left: 50%;
         transform: translateX(6px);
     }
