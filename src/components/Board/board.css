@@ -358,10 +358,24 @@
 }
 .sales-table .row-table{
     display: grid;
+    position: relative;
     /* grid-template-columns:  0px 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
-    grid-template-columns: 0px 60px minmax(65px, 1fr) minmax(120px, 135px) minmax(120px, 135px) minmax(80px, 1fr) minmax(80px, 1fr) minmax(120px, 135px) minmax(120px, 135px)  minmax(80px, 1fr) minmax(80px, 1fr) minmax(80px, 1fr) minmax(85px, 1fr); 
+    grid-template-columns: 0px 30px minmax(140px, 1fr) minmax(80px, 120px) minmax(120px, 135px) minmax(80px, 1fr) minmax(80px, 1fr) minmax(120px, 135px) minmax(120px, 135px)  minmax(80px, 1fr) minmax(80px, 1fr) minmax(80px, 1fr) minmax(85px, 1fr); 
     grid-auto-rows: minmax(40px, auto);
     border-right: 0;
+}
+.sales-table .row-table .removeButton{
+    position: absolute;
+    right: -30px;
+    top:14px;
+}
+.sales-table .row-table .removeButton i{
+    color:red;
+}
+.sales-table .row-table .updateButton{
+    position: absolute;
+    right: -60px;
+    top:20px;
 }
 .sales-table .row-table:hover .col-value{
     background: #e2f0f9;
@@ -538,6 +552,7 @@
     color:red;
     right: 0;
 }
+
 
 
 

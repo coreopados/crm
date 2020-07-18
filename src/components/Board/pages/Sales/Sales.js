@@ -3,28 +3,48 @@ import '../../../../App.css';
 import SalesTableRow from './tableRow/SalesTableRow';
 import FormNewOrder from './formNewOrder/FormNewOrder';
 import state from '../../../../state/dataTest';
-import { addRow } from '../../../../state/dataTest';
+import { remove } from '../../../../state/dataTest';
+
 
 class Sales extends React.Component {
 
-    state = {
-        // DisplayedItems: dataTest,
-        isOpen: false,
-        appState: state,
-        addRow: addRow,
-        updateOrder: false
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isOpen: false,
+            updateOrder: false,
+            remove: remove,
+            appState: state.dataTest,
+            currentId: '',
+            editRow: {}
+        }
     }
+
+
+
+    handeleEdit = (id) => {
+        const remainder = this.state.appState.filter((todo) => {
+            if (todo.id == (id + 1)) return todo;
+        })
+        this.setState({ editRow: remainder[0], isOpen: true, updateOrder: true, currentId: (id + 1) });
+    }
+
+
 
     render() {
 
         return (
             <div className="wrap-board" >
-                <FormNewOrder appState={this.state.appState} update={this.state.updateOrder} addRow={this.state.addRow} infoToPopup={this.props.tableInfo} isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false, updateOrder: false })} />
+
                 {/* edit block */}
-                < div className="row" >
+                <FormNewOrder appState={this.state.appState} currentId={this.state.currentId} edit={this.state.editRow} update={this.state.updateOrder} infoToPopup={this.props.tableInfo} isOpen={this.state.isOpen} onClose={() => this.setState({ isOpen: false, updateOrder: false })} />
+
+
+                <div className="row" >
                     <div className="title-wrap">
                         <h3 className="title">Sales</h3>
-                        {/* <h5 className="subtitle">Main parameters and sales</h5> */}
+
                     </div>
 
                     <div className="edit-block">
@@ -59,11 +79,11 @@ class Sales extends React.Component {
 
                     <div className="row-body">
                         {
-                            this.state.appState.dataTest.map((item, index) => {
+                            this.state.appState.map((item, index) => {
                                 return <SalesTableRow
                                     key={index}
                                     id={item.id}
-                                    number={item.number}
+                                    number={index + 1}
                                     project_name={item.project_name}
                                     type_work={item.type_work}
                                     date_start={item.date_start}
@@ -77,9 +97,14 @@ class Sales extends React.Component {
                                     payment={item.payment}
                                     updateOrder={this.state.updateOrder}
                                     openModal={(e) => this.setState({ isOpen: true, updateOrder: true })}
+
+                                    remove={this.state.remove}
+                                    edit={this.handeleEdit.bind(this, index)}
                                 />
+
                             })
                         }
+
                     </div>
                 </div>
 

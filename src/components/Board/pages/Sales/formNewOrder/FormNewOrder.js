@@ -4,6 +4,10 @@ import '../../../../../App';
 import '../../../../Login/login.css';
 import Input from "./Input";
 import Select from "./Select";
+import { addRow } from '../../../../../state/dataTest';
+
+import state from '../../../../../state/dataTest';
+import { updateRow } from '../../../../../state/dataTest';
 
 
 // import axios from 'axios';
@@ -12,8 +16,13 @@ class FormNewOrder extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props)
+
+
+
         this.state = {
+
+            data: state.dataTest,
+
             newOrder: {
                 type_work: 'Front-end',
                 source: 'Site',
@@ -25,6 +34,7 @@ class FormNewOrder extends React.Component {
                 paid: '',
                 commentary: '',
                 client: "",
+                payment: 'Sberbank'
             },
             type_work: ['Front-end', 'Back-end', 'Design'],
             source: ['Site', 'Friend', 'Client'],
@@ -37,22 +47,42 @@ class FormNewOrder extends React.Component {
             error_paid: "",
             error_cost: "",
             error_client: "",
-            // error_cost: "",
-            today: ""
         };
+
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.addRowData = this.addRowData.bind(this);
-        // this.getToday = this.getToday.bind(this);
+        this.updateRowData = this.updateRowData.bind(this);
     }
 
-    // getToday() {
-    //     let curr = new Date();
-    //     curr.setDate(curr.getDate());
-    //     let date = curr.toISOString().substr(0, 10);
-    //     this.state.today = date
-    // }
+    componentDidWillMount() {
+
+        this.setState({
+            newOrder: {
+                type_work: this.props.edit.type_work,
+                source: this.props.edit.source,
+                status: this.props.edit.status,
+                project_name: this.props.edit.project_name,
+                date_start: this.props.edit.date_start,
+                date_finish: this.props.edit.date_finish,
+                cost: this.props.edit.cost,
+                paid: this.props.edit.paid,
+                commentary: this.props.edit.commentary,
+                client: this.props.edit.client,
+                payment: this.props.edit.payment,
+            },
+            error_name: "",
+            error_date_start: "",
+            error_date_finish: "",
+            error_commentary: "",
+            error_paid: "",
+            error_cost: "",
+            error_client: ""
+        })
+
+
+    }
 
     validation() {
         let error_name = this.state.error_name = '';
@@ -120,7 +150,6 @@ class FormNewOrder extends React.Component {
         );
     }
 
-
     handleClearForm(e) {
         e.preventDefault();
         this.setState({
@@ -128,24 +157,11 @@ class FormNewOrder extends React.Component {
         })
     }
 
-
-
-    // addRowData(userData2) {
-    //     this.addRow(userData2);
-    //     this.props.onClose(true);
-
-    //     this.state.newOrder = {}
-    // }
-
-
-
-
-
     handleFormSubmit(e) {
         e.preventDefault();
         const isValid = this.validation();
 
-        if (isValid) {
+        if (isValid && !this.props.update) {
             let userData = this.state.newOrder;
             // let response;
             // const submitData = () => {
@@ -187,26 +203,98 @@ class FormNewOrder extends React.Component {
                 error_cost: "",
                 error_client: ""
             })
+        } else if (isValid && this.props.update) {
+            this.updateRowData()
+            this.props.onClose(false);
+            // this.state.newOrder = {}
         }
     }
 
     addRowData(e) {
         let userData2 = this.state.newOrder;
-        let idRow = (this.props.appState.dataTest.length + 1).toString();
-        let numberRow = (this.props.appState.dataTest.length + 1).toString();
+        let idRow = (this.props.appState.length + 1).toString();
+        let numberRow = (this.props.appState.length + 1).toString();
         userData2.number = numberRow;
         userData2.id = idRow;
-
-        this.props.addRow(userData2);
+        addRow(userData2);
         this.props.onClose(false);
-
         this.state.newOrder = {}
+    }
+
+    // updateRowData(e) {
+    //     this.setState({
+    //         newOrder: {
+    //             type_work: this.props.edit.type_work,
+    //             source: this.props.edit.source,
+    //             status: this.props.edit.status,
+    //             project_name: this.props.edit.project_name,
+    //             date_start: this.props.edit.date_start,
+    //             date_finish: this.props.edit.date_finish,
+    //             cost: this.props.edit.cost,
+    //             paid: this.props.edit.paid,
+    //             commentary: this.props.edit.commentary,
+    //             client: this.props.edit.client,
+    //             payment: this.props.edit.payment,
+    //         },
+    //         error_name: "",
+    //         error_date_start: "",
+    //         error_date_finish: "",
+    //         error_commentary: "",
+    //         error_paid: "",
+    //         error_cost: "",
+    //         error_client: ""
+    //     })
+    //     let order = this.state.newOrder
+    //     updateRow(order)
+    //     this.props.onClose(false);
+    //     console.log(this.state.newOrder)
+    //     this.state.newOrder = {}
+
+    // }
+
+    updateRowData = (id) => {
+
+        this.setState(({ data }) => {
+            console.log(data, this.props.currentId)
+            const idx = data.findIndex((el) => el.id == this.props.currentId)
+
+            const oldItem = data[idx];
+
+            const newItem = {
+                ...oldItem,
+                type_work: this.state.newOrder.type_work,
+                source: this.state.newOrder.source,
+                status: this.state.newOrder.status,
+                project_name: this.state.newOrder.project_name,
+                date_start: this.state.newOrder.date_start,
+                date_finish: this.state.newOrder.date_finish,
+                cost: this.state.newOrder.cost,
+                paid: this.state.newOrder.paid,
+                commentary: this.state.newOrder.commentary,
+                client: this.state.newOrder.client,
+                payment: this.state.newOrder.payment,
+            }
+            const newArray = [
+                ...data.slice(0, idx),
+                newItem,
+                ...data.slice(idx + 1),
+            ]
+            console.log(newArray)
+
+            updateRow(newArray)
+            return {
+                data: newArray
+            }
+
+
+        })
+
+        console.log(this.state.data)
     }
 
 
     render() {
-        // this.getToday();
-
+        // console.log(data)
         let Modal = (
             <div className="modalOverlay">
                 <div className="login-form new-order-form">
@@ -235,14 +323,12 @@ class FormNewOrder extends React.Component {
 
                         <label>
                             <p>Date start</p>
-                            {/* <Input className={this.state.error_date_start && 'error-field'} min={this.state.today} onChange={this.handleInput} type={'date'} name={"date_start"} /> */}
                             <Input className={this.state.error_date_start && 'error-field'} pattern="[0-9]{4}.[0-9]{2}.[0-9]{2}" onChange={this.handleInput} type={'date'} name={"date_start"} />
                             <p className='new-order-error'>{this.state.error_date_start}</p>
                         </label>
 
                         <label>
                             <p>Date finish</p>
-                            {/* <Input className={this.state.error_date_finish && 'error-field'} min={this.state.today} value={this.state.newOrder.finish} onChange={this.handleInput} type={'date'} name={"date_finish"} /> */}
                             <Input className={this.state.error_date_finish && 'error-field'} pattern="[0-9]{4}.[0-9]{2}.[0-9]{2}" value={this.state.newOrder.finish} onChange={this.handleInput} type={'date'} name={"date_finish"} />
                             <p className='new-order-error'>{this.state.error_date_finish}</p>
                         </label>
@@ -285,7 +371,7 @@ class FormNewOrder extends React.Component {
                         </label>
                         <label >
                             <p></p>
-                            <input className="login-button" type="submit" value='Add order' />
+                            <input className="login-button" type="submit" value={this.props.update ? "Update order" : "Add order"} />
                         </label>
 
 

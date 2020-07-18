@@ -1,3 +1,4 @@
+import { rerenderEntireTree } from '../render'
 
 let state = {
     dataTest: [
@@ -242,13 +243,28 @@ let state = {
 
 export let addRow = (userData2) => {
     state.dataTest.push(userData2)
+    rerenderEntireTree(state)
 }
+export let remove = (id) => {
+    state.dataTest.forEach(function (el, i) {
+        if (el.id == id) state.dataTest.splice(i, 1)
+    })
+    rerenderEntireTree(state)
+}
+export let updateRow = (order) => {
+    state.dataTest = order
+    // console.log('this text update')
+    rerenderEntireTree(state)
+}
+
 
 export let addClient = (client) => {
     state.Clients.push(client)
+    rerenderEntireTree(state)
 }
 
 export let addUser = (user) => {
     state.Users.push(user)
+    rerenderEntireTree(state)
 }
 export default state;
