@@ -251,8 +251,12 @@ export let remove = (id) => {
     })
     rerenderEntireTree(state)
 }
-export let updateRow = (order) => {
-    state.dataTest = order
+export let updateRow = (userData2) => {
+    // state.dataTest = [];
+    state.dataTest.forEach(function (el, i) {
+        console.log(el[0])
+    })
+    // state.dataTest.push(userData2)
     // console.log('this text update')
     rerenderEntireTree(state)
 }

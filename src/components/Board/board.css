@@ -374,8 +374,11 @@
 }
 .sales-table .row-table .updateButton{
     position: absolute;
-    right: -60px;
-    top:20px;
+    left: -30px;
+    top:14px;
+}
+.sales-table .row-table .updateButton i {
+    color:#41cafe
 }
 .sales-table .row-table:hover .col-value{
     background: #e2f0f9;

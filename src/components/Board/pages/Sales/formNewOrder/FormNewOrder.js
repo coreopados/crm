@@ -17,10 +17,7 @@ class FormNewOrder extends React.Component {
     constructor(props) {
         super(props);
 
-
-
         this.state = {
-
             data: state.dataTest,
 
             newOrder: {
@@ -204,7 +201,8 @@ class FormNewOrder extends React.Component {
                 error_client: ""
             })
         } else if (isValid && this.props.update) {
-            this.updateRowData()
+            let userData = this.state.data;
+            this.updateRowData(userData)
             this.props.onClose(false);
             // this.state.newOrder = {}
         }
@@ -252,10 +250,10 @@ class FormNewOrder extends React.Component {
 
     // }
 
-    updateRowData = (id) => {
+    updateRowData = () => {
 
         this.setState(({ data }) => {
-            console.log(data, this.props.currentId)
+
             const idx = data.findIndex((el) => el.id == this.props.currentId)
 
             const oldItem = data[idx];
@@ -274,27 +272,28 @@ class FormNewOrder extends React.Component {
                 client: this.state.newOrder.client,
                 payment: this.state.newOrder.payment,
             }
+
             const newArray = [
                 ...data.slice(0, idx),
                 newItem,
                 ...data.slice(idx + 1),
             ]
-            console.log(newArray)
 
-            updateRow(newArray)
             return {
                 data: newArray
             }
 
-
         })
+        let userData2 = this.state.data;
+        console.log(userData2)
+        updateRow(userData2)
 
-        console.log(this.state.data)
     }
 
 
     render() {
-        // console.log(data)
+        console.log(this.state.data)
+        console.log(this.props)
         let Modal = (
             <div className="modalOverlay">
                 <div className="login-form new-order-form">
@@ -374,7 +373,6 @@ class FormNewOrder extends React.Component {
                             <input className="login-button" type="submit" value={this.props.update ? "Update order" : "Add order"} />
                         </label>
 
-
                     </form>
                 </div>
             </div>
@@ -384,9 +382,7 @@ class FormNewOrder extends React.Component {
         }
         return (
             <div className="wrap_popup">
-
                 {Modal}
-
             </div>
         )
     }

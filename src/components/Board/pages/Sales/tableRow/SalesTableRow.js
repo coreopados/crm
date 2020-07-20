@@ -22,7 +22,7 @@ class SalesTableRow extends React.Component {
                 <div className="col-value">{this.props.paid}</div>
                 <div className="col-value">{this.props.cost}</div>
                 <div className="col-value">{this.props.status}</div>
-                <button onClick={() => this.props.edit(this.props.id)}>Update</button>
+                <button onClick={() => this.props.edit(this.props.id)} className="updateButton"><i className="fas fa-sync-alt"></i></button>
                 <button onClick={() => this.props.remove(this.props.id)} className="removeButton"><i className="fa fa-trash" aria-hidden="true"></i></button>
             </div >
 
